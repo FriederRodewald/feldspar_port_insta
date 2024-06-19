@@ -284,14 +284,15 @@ def extract_data(filename):
 def check_faces_in_zip(filename):
     """This function checks the number of faces in each image file within a zip file."""
 
-    table_list = []
-    i = 0
+    face_dict = {}
 
     # Load face cascade classifier
     face_cascade = cv2.CascadeClassifier(
         cv2.data.haarcascades + "haarcascade_frontalface_default.xml"
     )
 
+    # Set the desired size for the images
+    size = 200, 200
 
     # Open the zip file in read mode
     with zipfile.ZipFile(filename, "r") as zip_ref:
